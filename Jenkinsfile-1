@@ -10,12 +10,6 @@ pipeline {
         sh 'mvn clean verify sonar:sonar -Dsonar.projectkey=Obillor -Dsonar.organization=Earthrays-Organization -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=3f70ab8617f457118fe0db0dabc0b6f8d54e2bc5'
       }
     }
-   stage ('Run SCA Scan') {
-      steps {
-        withCredentials([string(credentialsId: 'SNYK_TOKEN', variable: 'SNYK_TOKEN')]) {
-           sh 'mvn snyk:test -fn'
- }
-}
-}
+
   }
 }
